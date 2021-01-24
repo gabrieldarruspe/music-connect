@@ -21,11 +21,17 @@ class SpotifyLibraryTest extends TestCase
         $user = User::factory()->withSpotifyAccount()->create();
         $response = $this->actingAs($user)->get('/users/me/music-libraries/spotify/saved-tracks');
 
-//        dump($response->content());
         $response->assertStatus(200);
 
         $response->assertJsonStructure(['*' => [
-            'name', 'artists', 'album_image_url', 'preview_url', 'added_at'
+            'provider_track_id',
+            'name',
+            'artists',
+            'album',
+            'album_image_url',
+            'track_number',
+            'preview_url',
+            'added_at'
         ]]);
     }
 }

@@ -38,9 +38,12 @@ class SpotifyMusicLibraryProvider implements MusicLibraryProvider
         return collect($spotifyTracks)->transform(function ($trackItem) {
             $track = $trackItem['track'];
             return [
+                'provider_track_id' => $track['id'],
                 'name' => $track['name'],
                 'artists' => $track['artists'],
+                'album' => $track['album'],
                 'album_image_url' => $track['album']['images'][0]['url'],
+                'track_number' => $track['track_number'],
                 'preview_url' => $track['preview_url'],
                 'added_at' => $trackItem['added_at'],
             ];
