@@ -84,7 +84,7 @@
                         },
                     }).then(x => {
                         delete this.user.oauth_providers.spotify;
-                        this.showDiv = true;
+                        this.tracks = {};
                     });
                 },
                 getUserTracks() {
