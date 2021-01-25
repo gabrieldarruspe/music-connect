@@ -15,14 +15,14 @@
                         <div class="flex">
                             <x-button
                                 class="m-auto"
-                                x-show="!('spotify' in user.oauth_providers)"
+                                x-show="!userHasProvider('spotify')"
                                 @click="window.location.href='/platform/spotify/authenticate'">
                                 Connect to Spotify
                             </x-button>
 
                             <x-button
                                 class="m-auto"
-                                x-show="'spotify' in user.oauth_providers"
+                                x-show="userHasProvider('spotify')"
                                 @click="unlinkAccount()">
                                 Unlink Spotify Account
                             </x-button>
@@ -98,8 +98,13 @@
                         .then(response => response.json())
                         .then(data => this.tracks = data);
                 },
+                userHasProvider(providerName){
+                    return this.user.oauth_providers !== null && providerName in this.user.oauth_providers;
+                },
                 init() {
-                    this.getUserTracks();
+                    if (this.userHasProvider('spotify')) {
+                        this.getUserTracks();
+                    }
                 }
             }
         }
