@@ -15,7 +15,8 @@
         "laravel/framework": "^8.12",
         "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.5",
-        "socialiteproviders/spotify": "^4.1"
+        "socialiteproviders/spotify": "^4.1",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.9",
